@@ -1,0 +1,57 @@
+<div class="container-fluid p-4 bg-white rounded-4 d-block section">
+    <form (ngSubmit)="submitForm()" [formGroup]="form">
+        <h4 class="text-center fs-2 pb-1 ">Register</h4>
+        <div class="mb-3">
+            <label  class="form-label">Name</label>
+            <input type="text" class="form-control" [ngClass]="{'is-invalid': submitted && f['username'].errors}" formControlName="username" >
+            <div class="invalid-feedback text-white" *ngIf="submitted && f['username'].errors">
+                <div *ngIf="f['username'].errors['required']">name is required!</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="text" formControlName="email" [ngClass]="{'is-invalid': submitted && f['email'].errors}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div class="invalid-feedback text-white" *ngIf="submitted && f['email'].errors">
+                <div *ngIf="f['email'].errors['required']">email is required!</div>
+                <div *ngIf="f['email'].errors['pattern']">invalid email!</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Password</label>
+            <input type="password" formControlName="password" [ngClass]="{'is-invalid': submitted && f['password'].errors}" class="form-control" >
+        </div>
+        <div class="invalid-feedback text-white" *ngIf="submitted && f['password'].errors">
+            <div *ngIf="f['password'].errors['required']">password is required!</div>
+            <div *ngIf="f['password'].errors['minlength']">minimum 8 characters required!</div>
+            <div *ngIf="f['password'].errors['maxlength']">maximum 20 characters allowed!</div>
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Address</label>
+            <textarea formControlName="address" rows="4" [ngClass]="{'is-invalid': submitted && f['address'].errors}" class="form-control" style="resize: none;"></textarea>
+            <div class="invalid-feedback text-white" *ngIf="submitted && f['address'].errors">
+                <div *ngIf="f['address'].errors['required']">address is required!</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Phone number</label>
+            <input type="text" class="form-control" formControlName="phone" [ngClass]="{'is-invalid': submitted && f['phone'].errors}" >
+        </div>
+        <div class="invalid-feedback text-white" *ngIf="submitted && f['phone'].errors">
+            <div *ngIf="f['phone'].errors['required']">phone number is required!</div>
+            <div *ngIf="f['phone'].errors['pattern']">invalid phone number!</div>
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Role</label>
+            <select formControlName="role" class="form-select">
+                <option value="user" selected>user</option>
+                <option value="admin">admin</option>
+            </select>
+        </div>
+        <div class="container-fluid d-flex flex-column align-items-center justify-content-center">
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-success">Register</button> <button type="button" (click)="resetForm()" class="btn btn-warning ms-2">Reset</button>
+            </div>
+            <a routerLink="/auth/login" class="text-white text-decoration-none mt-2"> Already a user login here</a>
+        </div>
+    </form>
+</div>

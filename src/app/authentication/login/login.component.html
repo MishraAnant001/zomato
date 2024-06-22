@@ -1,0 +1,21 @@
+<div class="container-fluid p-4 bg-white rounded-4 d-block section">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <h4 class="text-center fs-2 pb-1 ">Login</h4>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="text" class="form-control" formControlName="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1"  class="form-label">Password</label>
+          <input type="password" class="form-control" formControlName="password" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="remember">
+          <label class="form-check-label" for="exampleCheck1">Remember me</label>
+        </div>
+        <div class="container-fluid d-flex flex-column justify-content-center align-items-center">
+            <button type="submit" class="btn btn-success">Submit</button> 
+            <a routerLink="/auth/signup" class="text-white text-decoration-none mt-2"> New User register here </a>
+        </div>
+      </form>
+</div>
